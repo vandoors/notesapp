@@ -1,0 +1,35 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-notesapp-dev-183445-authRole",
+      "UnauthRoleArn": "arn:aws:iam::533267229378:role/amplify-notesapp-dev-183445-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::533267229378:role/amplify-notesapp-dev-183445-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-notesapp-dev-183445-deployment",
+      "UnauthRoleName": "amplify-notesapp-dev-183445-unauthRole",
+      "StackName": "amplify-notesapp-dev-183445",
+      "StackId": "arn:aws:cloudformation:us-east-1:533267229378:stack/amplify-notesapp-dev-183445/900838e0-08dc-11ef-9f2f-121713646be9",
+      "AmplifyAppId": "d13n5agqmcwehh"
+    }
+  },
+  "api": {
+    "notesapp": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 365,
+              "apiKeyExpirationDate": "2025-05-02T23:44:49.468Z",
+              "description": "public"
+            }
+          },
+          "additionalAuthenticationProviders": []
+        }
+      }
+    }
+  }
+}
