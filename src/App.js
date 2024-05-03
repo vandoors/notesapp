@@ -210,9 +210,11 @@ const App = () => {
          <List.Item
             style={styles.item}
             actions={[
-               <p style={styles.p} onClick={() => updateNote(item)}>
-                  {item.completed ? "completed" : "mark completed"}
-               </p>,
+               <input
+                  type="checkbox"
+                  checked={item.completed}
+                  onChange={() => updateNote(item)}
+               />,
                <p style={styles.p} onClick={() => deleteNote(item)}>
                   Delete
                </p>,
