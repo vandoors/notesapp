@@ -1,13 +1,13 @@
 {
-  "version": 1,
-  "serviceConfiguration": {
-    "apiName": "notesapp",
-    "serviceName": "AppSync",
-    "defaultAuthType": {
-      "mode": "API_KEY",
-      "expirationTime": 365,
-      "apiKeyExpirationDate": "2025-05-02T23:44:49.468Z",
-      "keyDescription": "public"
-    }
-  }
+   "version": 1,
+   "serviceConfiguration": {
+      "apiName": "notesapp",
+      "serviceName": "AppSync",
+      "defaultAuthType": {
+         "mode": "API_KEY",
+         "expirationTime": 365,
+         "apiKeyExpirationDate": "2025-05-02T23:44:49.468Z",
+         "keyDescription": "public"
+      }
+   }
 }
