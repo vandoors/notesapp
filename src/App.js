@@ -1,8 +1,9 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useReducer } from "react";
 import { generateClient } from "aws-amplify/api";
 import { v4 as uuid } from "uuid";
 import { List, Input, Button } from "antd";
 import "antd/dist/reset.css";
+import { DeleteOutlined } from "@ant-design/icons";
 import { listNotes } from "./graphql/queries";
 import {
    createNote as CreateNote,
@@ -198,26 +199,16 @@ const App = () => {
       };
    }, []);
 
-   const styles = {
-      container: { padding: 20 },
-      input: { marginBottom: 10 },
-      item: { textAlign: "left" },
-      p: { color: "#1890ff" },
-   };
-
    function renderItem(item) {
       return (
          <List.Item
-            style={styles.item}
             actions={[
                <input
                   type="checkbox"
                   checked={item.completed}
                   onChange={() => updateNote(item)}
                />,
-               <p style={styles.p} onClick={() => deleteNote(item)}>
-                  Delete
-               </p>,
+               <DeleteOutlined onClick={() => deleteNote(item)} />,
             ]}
          >
             <List.Item.Meta title={item.name} description={item.description} />
@@ -226,20 +217,18 @@ const App = () => {
    }
 
    return (
-      <div className="App" style={styles.container}>
+      <div className="App">
          <Input
             onChange={onChange}
             value={state.form.name}
             placeholder="Note name"
             name="name"
-            style={styles.input}
          />
          <Input
             onChange={onChange}
             value={state.form.description}
             placeholder="Note description"
             name="description"
-            style={styles.input}
          />
          <Button onClick={createNote} type="primary">
             Create Note

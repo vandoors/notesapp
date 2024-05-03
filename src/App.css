@@ -1,0 +1,21 @@
+.App {
+   padding: 20px;
+   max-width: 640px;
+   margin: 0 auto;
+}
+
+.ant-input {
+   margin-bottom: 10px;
+}
+
+.ant-list-item {
+   text-align: left;
+}
+
+.ant-list-item-meta-content * {
+   overflow-wrap: break-word;
+}
+
+.anticon-delete:hover {
+   color: #ff4d4f;
+}
