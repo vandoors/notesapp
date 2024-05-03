@@ -11,5 +11,34 @@
       "StackId": "arn:aws:cloudformation:us-east-1:533267229378:stack/amplify-notesapp-dev-183445/900838e0-08dc-11ef-9f2f-121713646be9",
       "AmplifyAppId": "d13n5agqmcwehh"
     }
+  },
+  "api": {
+    "notesapp": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 365,
+              "apiKeyExpirationDate": "2025-05-02T23:44:49.468Z",
+              "description": "public"
+            }
+          },
+          "additionalAuthenticationProviders": []
+        },
+        "GraphQLAPIIdOutput": "egtl5jkjpzfxdnalslh7j5qkla",
+        "GraphQLAPIEndpointOutput": "https://i25a56de6ffgpdgrzxf6zkyqzq.appsync-api.us-east-1.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-zgbqtsq5eff55bqygpmz5ftnhi"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-notesapp-dev-183445-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apinotesapp"
+      },
+      "lastPushTimeStamp": "2024-05-03T00:02:26.973Z",
+      "lastPushDirHash": "CisDkQsEjZo7/H3aKZ0aAjKasK8="
+    }
   }
 }

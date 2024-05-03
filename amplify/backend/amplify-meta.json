@@ -28,8 +28,17 @@
             }
           },
           "additionalAuthenticationProviders": []
-        }
-      }
+        },
+        "GraphQLAPIIdOutput": "egtl5jkjpzfxdnalslh7j5qkla",
+        "GraphQLAPIEndpointOutput": "https://i25a56de6ffgpdgrzxf6zkyqzq.appsync-api.us-east-1.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-zgbqtsq5eff55bqygpmz5ftnhi"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-notesapp-dev-183445-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apinotesapp"
+      },
+      "lastPushTimeStamp": "2024-05-03T00:02:26.973Z",
+      "lastPushDirHash": "CisDkQsEjZo7/H3aKZ0aAjKasK8="
     }
   }
 }

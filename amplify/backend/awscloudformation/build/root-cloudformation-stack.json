@@ -151,6 +151,20 @@
           "Ref": "UnauthRoleName"
         }
       }
+    },
+    "apinotesapp": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-notesapp-dev-183445-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "Parameters": {
+          "AppSyncApiName": "notesapp",
+          "DynamoDBBillingMode": "PAY_PER_REQUEST",
+          "DynamoDBEnableServerSideEncryption": false,
+          "S3DeploymentBucket": "amplify-notesapp-dev-183445-deployment",
+          "S3DeploymentRootKey": "amplify-appsync-files/3aa3d29789d3d7c59994ff7d9ea632ff392328dd",
+          "env": "dev"
+        }
+      }
     }
   }
 }
