@@ -9,7 +9,11 @@ import {
    deleteNote as DeleteNote,
    updateNote as UpdateNote,
 } from "./graphql/mutations";
-import { onCreateNote } from "./graphql/subscriptions";
+import {
+   onCreateNote,
+   onDeleteNote,
+   onUpdateNote,
+} from "./graphql/subscriptions";
 import "./App.css";
 
 const CLIENT_ID = uuid();
@@ -27,6 +31,18 @@ function reducer(state, action) {
          return { ...state, notes: action.notes, loading: false };
       case "ADD_NOTE":
          return { ...state, notes: [action.note, ...state.notes] };
+      case "DELETE_NOTE":
+         return {
+            ...state,
+            notes: state.notes.filter((note) => note.id !== action.note.id),
+         };
+      case "UPDATE_NOTE":
+         return {
+            ...state,
+            notes: state.notes.map((note) =>
+               note.id === action.note.id ? action.note : note,
+            ),
+         };
       case "RESET_FORM":
          return { ...state, form: initialState.form };
       case "SET_INPUT":
@@ -136,18 +152,50 @@ const App = () => {
    useEffect(() => {
       fetchNotes();
 
-      const subscription = client
+      const onCreateSubscription = client
          .graphql({
             query: onCreateNote,
          })
          .subscribe({
             next: (noteData) => {
+               console.log(noteData);
                const note = noteData.data.onCreateNote;
                if (CLIENT_ID === note.clientId) return;
                dispatch({ type: "ADD_NOTE", note });
             },
          });
-      return () => subscription.unsubscribe();
+
+      const onDeleteSubscription = client
+         .graphql({
+            query: onDeleteNote,
+         })
+         .subscribe({
+            next: (noteData) => {
+               console.log(noteData);
+               const note = noteData.data.onDeleteNote;
+               if (CLIENT_ID === note.clientId) return;
+               dispatch({ type: "DELETE_NOTE", note });
+            },
+         });
+
+      const onUpdateSubscription = client
+         .graphql({
+            query: onUpdateNote,
+         })
+         .subscribe({
+            next: (noteData) => {
+               console.log(noteData);
+               const note = noteData.data.onUpdateNote;
+               if (CLIENT_ID === note.clientId) return;
+               dispatch({ type: "UPDATE_NOTE", note });
+            },
+         });
+
+      return () => {
+         onCreateSubscription.unsubscribe();
+         onDeleteSubscription.unsubscribe();
+         onUpdateSubscription.unsubscribe();
+      };
    }, []);
 
    const styles = {
