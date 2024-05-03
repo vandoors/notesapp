@@ -238,6 +238,7 @@ const App = () => {
             loading={state.loading}
             dataSource={state.notes}
             renderItem={renderItem}
+            className="list"
          />
       </div>
    );

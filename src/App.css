@@ -8,6 +8,10 @@
    margin-bottom: 10px;
 }
 
+.list {
+   padding-top: 10px;
+}
+
 .ant-list-item {
    text-align: left;
 }
