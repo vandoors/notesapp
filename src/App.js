@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useCallback } from "react";
 import { generateClient } from "aws-amplify/api";
 import { v4 as uuid } from "uuid";
 import { List, Input, Button } from "antd";
@@ -63,7 +63,7 @@ const App = () => {
 
    const client = generateClient();
 
-   const fetchNotes = async () => {
+   const fetchNotes = useCallback(async () => {
       try {
          const notesData = await client.graphql({
             query: listNotes,
@@ -76,7 +76,7 @@ const App = () => {
          console.error(err);
          dispatch({ type: "ERROR" });
       }
-   };
+   }, [client]);
 
    const createNote = async () => {
       const { form } = state;
@@ -197,7 +197,7 @@ const App = () => {
          onDeleteSubscription.unsubscribe();
          onUpdateSubscription.unsubscribe();
       };
-   }, []);
+   }, [client, fetchNotes]);
 
    function renderItem(item) {
       return (
